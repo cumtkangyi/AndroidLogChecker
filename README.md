@@ -1,0 +1,2 @@
+AndroidLogChecker
+=================
