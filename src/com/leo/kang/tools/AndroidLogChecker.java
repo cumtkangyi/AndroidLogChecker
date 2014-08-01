@@ -94,7 +94,6 @@ public class AndroidLogChecker {
 			    + str.trim().replaceAll("\\s", ""));
 		}
 	    }
-
 	    br.close();
 	    reader.close();
 
