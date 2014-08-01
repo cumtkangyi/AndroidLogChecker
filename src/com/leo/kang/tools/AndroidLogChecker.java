@@ -1,4 +1,5 @@
 package com.leo.kang.tools;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,6 +28,7 @@ public class AndroidLogChecker {
 
     /**
      * Get all files
+     * 
      * @author: yi.kang
      * @date: 2014年7月31日 下午8:05:25
      * @param dir
@@ -40,7 +42,9 @@ public class AndroidLogChecker {
 	String path = "";
 	for (int i = 0; i < fs.length; i++) {
 	    path = fs[i].getAbsolutePath();
-	    if (!fs[i].isDirectory()
+
+	    //
+	    if (!fs[i].isDirectory() && path.contains(".java")
 		    && path.substring(path.lastIndexOf(".")).contains("java")) {
 		fileList.add(fs[i]);
 	    }
@@ -56,6 +60,7 @@ public class AndroidLogChecker {
 
     /**
      * Read file line by line
+     * 
      * @author: yi.kang
      * @date: 2014年7月31日 下午8:06:20
      * @param file
@@ -63,7 +68,7 @@ public class AndroidLogChecker {
     public static void readFileByLine(File file) {
 	try {
 	    // read file content from file
-	    //StringBuffer sb = new StringBuffer("");
+	    // StringBuffer sb = new StringBuffer("");
 	    String fileName = file.getAbsolutePath();
 	    FileReader reader = new FileReader(fileName);
 	    BufferedReader br = new BufferedReader(reader);
@@ -71,21 +76,22 @@ public class AndroidLogChecker {
 	    String str = null;
 
 	    int line = 0;
-	    
+
 	    while ((str = br.readLine()) != null) {
 		line++;
-		if (str.contains("Log.i(") 
-			|| str.contains("Log.d(")
-			|| str.contains("Log.w(") 
-			|| str.contains("Log.v(")
+		if (str.contains("Log.i(") || str.contains("Log.d(")
+			|| str.contains("Log.w(") || str.contains("Log.v(")
 			|| str.contains("Log.e(")) {
 		    // sb.append(fileName.substring(fileName.lastIndexOf("\\") +
 		    // 1)
 		    // + "  line " + line + "  " + str.trim() + "/n");
 
-		    System.out.println(file.getAbsolutePath().substring(
-			    file.getAbsolutePath().lastIndexOf("\\") + 1)
-			    + "  line " + line + "  " + str.trim());
+		    System.out.println(fileName.substring(fileName
+			    .lastIndexOf("\\") + 1)
+			    + "  line "
+			    + line
+			    + "  "
+			    + str.trim().replaceAll("\\s", ""));
 		}
 	    }
 
@@ -93,12 +99,12 @@ public class AndroidLogChecker {
 	    reader.close();
 
 	    // write string to file
-	    //FileWriter writer = new FileWriter("c://test2.txt");
-	    //BufferedWriter bw = new BufferedWriter(writer);
-	    //bw.write(sb.toString());
+	    // FileWriter writer = new FileWriter("c://test2.txt");
+	    // BufferedWriter bw = new BufferedWriter(writer);
+	    // bw.write(sb.toString());
 
-	    //bw.close();
-	    //writer.close();
+	    // bw.close();
+	    // writer.close();
 	} catch (FileNotFoundException e) {
 	    e.printStackTrace();
 	} catch (IOException e) {
