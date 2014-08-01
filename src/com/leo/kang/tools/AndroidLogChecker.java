@@ -29,7 +29,7 @@ public class AndroidLogChecker {
     /**
      * Get all files
      * 
-     * @author: yi.kang
+     * @author: Kang, Leo
      * @date: 2014年7月31日 下午8:05:25
      * @param dir
      * @throws Exception
@@ -61,7 +61,7 @@ public class AndroidLogChecker {
     /**
      * Read file line by line
      * 
-     * @author: yi.kang
+     * @author: Kang, Leo
      * @date: 2014年7月31日 下午8:06:20
      * @param file
      */
